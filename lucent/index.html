@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Apply theme from localStorage on initial load to prevent FOUC
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Custom Tailwind theme configuration
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#0d9488', // teal-600
+                hover: '#0f766e',   // teal-700
+                light: '#2dd4bf',   // teal-400
+              },
+              background: {
+                light: '#f8fafc', // slate-50
+                dark: '#020617',  // slate-950
+              },
+              surface: {
+                light: '#ffffff', // white
+                dark: '#0f172a', // slate-900
+              },
+              border: {
+                light: '#e2e8f0', // slate-200
+                dark: '#1e293b', // slate-800
+              },
+              'text-primary': {
+                light: '#0f172a', // slate-900
+                dark: '#f1f5f9', // slate-100
+              },
+              'text-secondary': {
+                light: '#475569', // slate-600
+                dark: '#94a3b8', // slate-400
+              },
+              'text-accent': {
+                  light: '#0d9488', // teal-600
+                  dark: '#2dd4bf', // teal-400
+              }
+            },
+            boxShadow: {
+              'soft': '0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05)',
+              'soft-lg': '0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05)',
+            },
+            borderRadius: {
+              'xl': '0.75rem',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.8.2",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^0.16.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
